@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body>
+   <aside>
+        <div id="settings">
+            <h1>Settings</h1>
+            <!-- <div class="control-panel">
+                <h2>Presets</h2>
+                <div class="presets">
+                    <input type="radio" name="presets">
+                    <input type="radio" name="presets">
+                    <input type="radio" name="presets">
+                    <input type="radio" name="presets">
+                </div>
+            </div> -->
+
+            <div class="control-panel">
+                <h2>Start / Stop</h2>
+                <button id="playback">Play</button>
+            </div>
+
+            <div class="control-panel">
+                <h2>Speed</h2>
+                <input type="range" min="10" max="1000" value="250" class="range-slider__range" id="speed">
+            </div>
+
+            <div class="control-panel">
+                <h2>Horizontal Distance</h2>
+                <input type="range" min="10" max="3000" value="500" class="range-slider__range" id="hdist">
+            </div>
+
+            <div class="control-panel">
+                <h2>Vertical Distance</h2>
+                <input type="range" min="10" max="3000" value="500" class="range-slider__range" id="vdist">
+            </div>
+
+            <div class="control-panel">
+                <h2>Spread From Center</h2>
+                <input type="range" min="1" max="5000" value="3500" class="range-slider__range" id="twdist">
+            </div>
+
+            <div class="control-panel">
+                <h2>Dot Size</h2>
+                <input type="range" min="1" max="20" value="6" class="range-slider__range" id="dsize">
+            </div>
+        </div>
+    </aside>
+
+    <section id="canvas-area">
+        <!--<canvas></canvas>-->
+    </section>
+
+</body>
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script> -->
+<script type="module" src="js/season.js"></script
+</html>

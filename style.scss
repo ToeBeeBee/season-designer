@@ -1,0 +1,197 @@
+$primary-col: rgb(119, 119, 119);
+$background-col: rgb(250, 250, 250);
+
+body {
+    display: flex;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: 'Rubik', sans-serif;
+
+
+    color: $primary-col;
+}
+
+aside {
+    width: 500px;
+    height: 100%;
+    background-color: $background-col;
+
+    #settings {
+
+        margin: 50px; 
+        margin-top: 30px;
+        font-size: 1.1em;
+
+        h1 {
+            font-size: 1.5em;
+            text-align: center;
+            font-weight: 300;
+        }
+    
+        h2 {
+            font-size: 0.9em;
+            text-align: center;
+            font-weight: 300;
+        }
+        
+        ::-webkit-slider-thumb {background-color: red;}
+        ::-moz-range-thumb  {background-color: green;}
+    
+        .control-panel {
+            margin-top: 3em;
+
+            .presets {
+              display: block;
+              width: 10%;
+              margin: 0 auto;
+            }
+
+            #playback {
+              display: block;
+              width: 75%;
+              margin: 0 auto;
+            }
+
+            .slider {
+              -webkit-appearance: none;
+              appearance: none;
+                width: 100%;
+            }
+        }
+    }
+}
+
+section {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(8, 111, 247, 0.596);
+
+    canvas {
+      width: 100%;
+      height: 100%;
+    }
+}
+
+// Base Colors
+$shade-10: #2c3e50 !default;
+$shade-1: #d7dcdf !default;
+$shade-0: #fff !default;
+$teal: #3abc1a !default;
+
+
+// Reset
+* {
+  &,
+  &:before,
+  &:after {
+    box-sizing: border-box;
+  }
+}
+
+$range-handle-color: $shade-10 !default;
+$range-handle-color-hover: $teal !default;
+$range-handle-size: 20px !default;
+
+$range-track-color: $shade-1 !default;
+$range-track-height: 10px !default;
+
+$range-label-color: $shade-10 !default;
+$range-label-width: 60px !default;
+
+
+.range-slider__range {
+  -webkit-appearance: none;
+  width: 100%;
+  height: $range-track-height;
+  border-radius: 5px;
+  background: $range-track-color;
+  outline: none;
+  padding: 0;
+  margin: 0;
+
+  // Range Handle
+  &::-webkit-slider-thumb {
+    appearance: none;
+    width: $range-handle-size;
+    height: $range-handle-size;
+    border-radius: 50%;
+    background: rebeccapurple;
+    cursor: pointer;
+    transition: background .15s ease-in-out;
+
+    &:hover {
+      background: rebeccapurple;
+    }
+  }
+
+  &:active::-webkit-slider-thumb {
+    background: rebeccapurple;
+  }
+
+  &::-moz-range-thumb {
+    width: $range-handle-size;
+    height: $range-handle-size;
+    border: 0;
+    border-radius: 50%;
+    background: $range-handle-color;
+    cursor: pointer;
+    transition: background .15s ease-in-out;
+
+    &:hover {
+      background: rebeccapurple;
+    }
+  }
+
+  &:active::-moz-range-thumb {
+    background: rebeccapurple;
+  }
+  
+  // Focus state
+  &:focus {
+    
+    &::-webkit-slider-thumb {
+      box-shadow: 0 0 0 3px $shade-0,
+                  0 0 0 6px rebeccapurple;
+    }
+  }
+}
+
+
+// Range Label
+.range-slider__value {
+  display: inline-block;
+  position: relative;
+  width: $range-label-width;
+  color: rebeccapurple;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 3px;
+  background: rebeccapurple;
+  padding: 5px 10px;
+  margin-left: 8px;
+
+  &:after {
+    position: absolute;
+    top: 8px;
+    left: -7px;
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-right: 7px solid rebeccapurple;
+    border-bottom: 7px solid transparent;
+    content: '';
+  }
+}
+
+
+// Firefox Overrides
+::-moz-range-track {
+    background: rebeccapurple;
+    border: 0;
+}
+
+input::-moz-focus-inner,
+input::-moz-focus-outer { 
+  border: 0; 
+}
