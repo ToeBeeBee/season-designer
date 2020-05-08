@@ -3,14 +3,14 @@ import {SVGLoader} from './examples/jsm/loaders/SVGLoader.js';
 
 const vshader = `
 uniform float size;
-
+attribute float scale;
 
 void main() {
 
 
     vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
 
-    gl_PointSize = size * ( 300.0 / -mvPosition.z );
+    gl_PointSize = (size + scale) * ( 300.0 / -mvPosition.z );
 
     gl_Position = projectionMatrix * mvPosition;
 
@@ -38,6 +38,7 @@ let loader = new SVGLoader();
 
 let logoMesh;
 let originalLogoVertecies;
+let scales;
 
 let frameCount = 0;
 
@@ -71,24 +72,30 @@ document.getElementById("speed").oninput = function() {
 let hDist = document.getElementById("hdist").value;
 document.getElementById("hdist").oninput = function() {
     hDist = document.getElementById("hdist").value;
-    createRandomVectorArray();
+    calculateMeshAttributes();
 };
 
 let vDist = document.getElementById("vdist").value;
 document.getElementById("vdist").oninput = function() {
     vDist = document.getElementById("vdist").value;
-    createRandomVectorArray();
+    calculateMeshAttributes();
 };
 
-let dsize = document.getElementById("dsize").value;
+let dsize = document.getElementById("dsize").value*0.1;
 document.getElementById("dsize").oninput = function() {
-    dsize = document.getElementById("dsize").value;
+    dsize = document.getElementById("dsize").value*0.1;
+};
+
+let dRandomSize = document.getElementById("dRandomSize").value;
+document.getElementById("dRandomSize").oninput = function() {
+    dRandomSize = document.getElementById("dRandomSize").value;
+    calculateMeshAttributes();
 };
 
 let twDist = document.getElementById("twdist").value*0.0000001;
 document.getElementById("twdist").oninput = function() {
     twDist = document.getElementById("twdist").value*0.0000001;
-    createRandomVectorArray();
+    calculateMeshAttributes();
 };
 
 window.onload = initScene;
@@ -189,9 +196,10 @@ function addSVGtoScene( data ){
     });
 
     createLogoInParticles();
-    createRandomVectorArray();
+    calculateMeshAttributes();
 
     dotGeometry.setAttribute( 'position', new THREE.BufferAttribute( originalLogoVertecies.slice(), 3 ) );
+    dotGeometry.setAttribute( 'scale', new THREE.BufferAttribute( scales.slice(), 1 ) );
     logoMesh = new THREE.Points(dotGeometry, dotMaterial);
 
     scene.add(logoMesh);
@@ -200,19 +208,25 @@ function addSVGtoScene( data ){
     animate();
 }
 
-function updatePos(mesh){
+function updateMesh(mesh){
     for(let i = 0; i < mesh.geometry.attributes.position.array.length; i++){
         mesh.geometry.attributes.position.array[i] = originalLogoVertecies[i] + (randomVectors[i]*animationPercentage(frameCount));
-        mesh.material.uniforms.size.value = dsize;
     }
+    for(let i = 0; i < mesh.geometry.attributes.scale.array.length; i++){
+        mesh.geometry.attributes.scale.array[i] = scales[i]*animationPercentage(frameCount);
+        
+    }
+    mesh.material.uniforms.size.value = dsize;
     mesh.geometry.attributes.position.needsUpdate = true;
+    mesh.geometry.attributes.scale.needsUpdate = true;
+    console.log( scales );
 }
 
 function canvasScaleFactor(){
     return Math.pow(canvasArea.clientWidth, 2) + Math.pow(canvasArea.clientHeight, 2);
 }
 
-function createRandomVectorArray() {
+function calculateMeshAttributes() {
     
     for(let i = 0; i < originalLogoVertecies.length; i++){
         let distFromCenter = 1-(
@@ -223,8 +237,12 @@ function createRandomVectorArray() {
 
         randomVectors[(i*3)] = (hDist-Math.random()*hDist*2) *distFromCenter;
         randomVectors[(i*3)+1] = (vDist-Math.random()*vDist*2) *distFromCenter;
-        randomVectors[(i*3)+2] = (-800 + (Math.random()-0.5)*350);
+        randomVectors[(i*3)+2] = -200-(Math.random()*950);
     }
+    for(let i = 0; i < scales.length; i++){
+        scales[i] = Math.random()*dRandomSize;
+    }
+
 }
 
 function createLogoInParticles() {
@@ -250,8 +268,14 @@ function createLogoInParticles() {
     }
     
     originalLogoVertecies = new Float32Array(pointArray.length);
+    scales = new Float32Array(pointArray.length/3);
     for(let i = 0; i < pointArray.length; i++){
+            scales[i%3] = 0;
             originalLogoVertecies[i] = pointArray[i];
+    }
+
+    for(let i = 0; i < scales.length; i++){
+        scales[i%3] = 0;
     }
 }
 
@@ -295,7 +319,7 @@ function animate() {
     // camera.lookAt(0,0,0);
     requestAnimationFrame(animate);
     if (playback) {
-        updatePos(logoMesh);
+        updateMesh(logoMesh);
 
         if(!paused && animationPercentage(frameCount) < animationPercentage(speed)){
             paused = true;
