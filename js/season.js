@@ -66,11 +66,11 @@ let hDist = 450;
 
 let vDist = 1500;
 
-let twDist = 1;
+let twDist = 1*0.0000001;
 
 let dRandomSize = 20;
 
-let dsize = 20;
+let dsize = 20*0.1;
 
 window.onload = initScene;
 
