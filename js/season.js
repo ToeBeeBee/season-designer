@@ -289,7 +289,11 @@ function onWindowResize() {
 }
 
 function sigmoid(t, r) {
-    return 1 / (1 + Math.pow(Math.E, -(r + ((r * -2) * t))));
+    return 1 / (1 + Math.pow(Math.E, -(r + ((r * -1.4) * t))));
+}
+
+function guassian(t, a) {
+    return (1 / a * Math.sqrt(2*Math.PI))*(Math.pow(Math.E, -(Math.pow((t-b), 2)/Math.pow(2*a, 2))));
 }
 
 function pingpong(value, range1, range2){
@@ -304,6 +308,7 @@ function pingpong(value, range1, range2){
 
 function animationPercentage(time) {
     return sigmoid(pingpong(time, 0, 1), -12);
+
 }
 
 // Take the value inside of a range and returns as a percentage 
