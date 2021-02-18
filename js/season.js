@@ -60,17 +60,17 @@ let ctx;
 
 let playback = true;
 
-const speed = 450 * 0.000005;
+let speed = 450 * 0.000005;
 
-const hDist = 450;
+let hDist = 450;
 
-const vDist = 1500;
+let vDist = 1500;
 
-const twDist = 1;
+let twDist = 1;
 
-const dRandomSize = 20;
+let dRandomSize = 20;
 
-const dsize = 20;
+let dsize = 20;
 
 window.onload = initScene;
 
