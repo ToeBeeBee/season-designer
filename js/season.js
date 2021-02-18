@@ -289,7 +289,7 @@ function onWindowResize() {
 }
 
 function sigmoid(t, r) {
-    return 1 / (1 + Math.pow(Math.E, -(r + ((r * -1.4) * t))));
+    return 1 / (1 + Math.pow(Math.E, -(r + ((r * -1.5) * t))));
 }
 
 function guassian(t, a) {
