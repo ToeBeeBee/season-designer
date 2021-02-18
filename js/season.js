@@ -42,7 +42,7 @@ let scales;
 
 let frameCount = 0;
 
-let particleLimit = 2500;
+let particleLimit = 5000;
 
 let paused = false;
 let pauseCount = 0;
