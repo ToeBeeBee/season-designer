@@ -60,43 +60,17 @@ let ctx;
 
 let playback = true;
 
-document.getElementById("playback").onclick = function() {
-    playback = !playback;
-};
+const speed = 450 * 0.000005;
 
-let speed = document.getElementById("speed").value * 0.000005;
-document.getElementById("speed").oninput = function() {
-    speed = document.getElementById("speed").value * 0.000005;
-};
+const hDist = 450;
 
-let hDist = document.getElementById("hdist").value;
-document.getElementById("hdist").oninput = function() {
-    hDist = document.getElementById("hdist").value;
-    calculateMeshAttributes();
-};
+const vDist = 1500;
 
-let vDist = document.getElementById("vdist").value;
-document.getElementById("vdist").oninput = function() {
-    vDist = document.getElementById("vdist").value;
-    calculateMeshAttributes();
-};
+const twDist = 1;
 
-let dsize = document.getElementById("dsize").value*0.1;
-document.getElementById("dsize").oninput = function() {
-    dsize = document.getElementById("dsize").value*0.1;
-};
+const dRandomSize = 20;
 
-let dRandomSize = document.getElementById("dRandomSize").value;
-document.getElementById("dRandomSize").oninput = function() {
-    dRandomSize = document.getElementById("dRandomSize").value;
-    calculateMeshAttributes();
-};
-
-let twDist = document.getElementById("twdist").value*0.0000001;
-document.getElementById("twdist").oninput = function() {
-    twDist = document.getElementById("twdist").value*0.0000001;
-    calculateMeshAttributes();
-};
+const dsize = 20;
 
 window.onload = initScene;
 
