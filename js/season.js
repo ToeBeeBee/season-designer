@@ -1,5 +1,5 @@
-import * as THREE from './build/three.module.js';
-import {SVGLoader} from './examples/jsm/loaders/SVGLoader.js';
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.125.2/build/three.min.js';
+import {SVGLoader} from 'https://cdn.jsdelivr.net/npm/three@0.125.2/examples/jsm/loaders/SVGLoader.js';
 
 const vshader = `
 uniform float size;
