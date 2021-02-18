@@ -289,7 +289,7 @@ function onWindowResize() {
 }
 
 function sigmoid(t, r) {
-    return 1 / (1 + Math.pow(Math.E, -(r + ((r * -1.5) * t))));
+    return 1 / (1 + Math.pow(Math.E, -(r + ((r * -1.6) * t))));
 }
 
 function guassian(t, a) {
@@ -307,7 +307,7 @@ function pingpong(value, range1, range2){
 }
 
 function animationPercentage(time) {
-    return sigmoid(pingpong(time, 0, 1), -12);
+    return sigmoid(pingpong(time, 0, 1), -7.5);
 
 }
 
