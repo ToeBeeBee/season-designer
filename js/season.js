@@ -193,7 +193,6 @@ function updateMesh(mesh){
     mesh.material.uniforms.size.value = dsize;
     mesh.geometry.attributes.position.needsUpdate = true;
     mesh.geometry.attributes.scale.needsUpdate = true;
-    console.log( scales );
 }
 
 function canvasScaleFactor(){
@@ -264,10 +263,6 @@ function onWindowResize() {
 
 function sigmoid(t, r) {
     return 1 / (1 + Math.pow(Math.E, -(r + ((r * -1.78) * t))));
-}
-
-function guassian(t, a) {
-    return (1 / a * Math.sqrt(2*Math.PI))*(Math.pow(Math.E, -(Math.pow((t-b), 2)/Math.pow(2*a, 2))));
 }
 
 function pingpong(value, range1, range2){
