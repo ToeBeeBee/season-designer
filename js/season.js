@@ -307,7 +307,7 @@ function pingpong(value, range1, range2){
 }
 
 function animationPercentage(time) {
-    return sigmoid(pingpong(time, 0, 1), -7.5);
+    return sigmoid(pingpong(time, 0, 1), -8.2);
 
 }
 
