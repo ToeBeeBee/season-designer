@@ -231,9 +231,9 @@ function calculateMeshAttributes() {
         for (let i = 0; i < pixels.length/4; i++) {
             //read the pixel
             let brightness = (pixels[i*4] + pixels[i*4 + 1] + pixels[i*4 + 2]) / 3;
-            
+            //i%(Math.ceil((pixels.length*0.001) / particleLimit)
             if (brightness > 128) {
-                if(i%(Math.ceil((pixels.length*0.001) / particleLimit)) == 0){
+                if(true){
                     pointArray.push((Math.random()-0.5)+((gl.drawingBufferWidth / 2) - (i % gl.drawingBufferWidth))*screenUnitDifference);
                     pointArray.push((Math.random()-0.5)+((gl.drawingBufferHeight / 2) - (i / gl.drawingBufferWidth))*-1*screenUnitDifference);
                     pointArray.push(0);
