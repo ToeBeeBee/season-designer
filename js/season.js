@@ -72,7 +72,7 @@ let dRandomSize = 20;
 
 let dsize = 20*0.1;
 
-document.getElementById("canvas-area").addEventListener("load", initScene);
+document.addEventListener("load", initScene);
 document.addEventListener("resize", onWindowResize);
 
 function initScene() {
