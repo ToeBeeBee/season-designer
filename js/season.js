@@ -30,7 +30,7 @@ void main() {
 `;
 
 
-let logoFile = "http://toebeeben.com/season-designer/js/season.svg";
+let logoFile = "https://toebeeben.com/season-designer/js/season.svg";
 
 
 let logoSVGObject;
