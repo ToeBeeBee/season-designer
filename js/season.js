@@ -1,4 +1,4 @@
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.125.2/build/three.module.js';
+import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/0.145.0/three.module.min.js';
 import {SVGLoader} from 'https://cdn.jsdelivr.net/npm/three@0.125.2/examples/jsm/loaders/SVGLoader.js';
 
 const vshader = `
